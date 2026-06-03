@@ -1,87 +1,129 @@
 let graficoInstance = null;
 
-// ===================== CRIAR GRÁFICO =====================
 function criarGrafico() {
-    const canvas = document.getElementById('grafico_principal');
 
-    let resultados = JSON.parse(localStorage.getItem('resultados')) || [];
+    const canvas =
+        document.getElementById('grafico_principal');
 
-    // 🔥 pega melhor pontuação por usuário
+    const resultados =
+        JSON.parse(localStorage.getItem('resultados')) || [];
+
     const melhores = {};
 
-    resultados.forEach(r => {
-        const usuario = r.usuario;
+    resultados.forEach(resultado => {
 
-        if (!melhores[usuario] || r.pontuacao > melhores[usuario]) {
-            melhores[usuario] = r.pontuacao;
+        const usuario = resultado.usuario;
+
+        if (
+            !melhores[usuario] ||
+            resultado.pontuacao > melhores[usuario]
+        ) {
+            melhores[usuario] = resultado.pontuacao;
         }
     });
 
     const labels = Object.keys(melhores);
     const dados = Object.values(melhores);
 
-    // 🔥 destrói gráfico antigo se existir
     if (graficoInstance) {
         graficoInstance.destroy();
     }
 
-    // 🔥 cria novo gráfico
     graficoInstance = new Chart(canvas, {
+
         type: 'bar',
+
         data: {
-            labels: labels,
+
+            labels,
+
             datasets: [{
                 label: 'Melhor Pontuação',
                 data: dados,
-                backgroundColor: 'rgba(255, 0, 0, 0.6)',
+
+                backgroundColor: 'rgba(255,0,0,0.5)',
                 borderColor: '#ff0000',
                 borderWidth: 2
             }]
         },
+
         options: {
+
             responsive: true,
             maintainAspectRatio: false,
+
             plugins: {
+
+                legend: {
+                    labels: {
+                        color: '#ffffff'
+                    }
+                },
+
                 title: {
                     display: true,
-                    text: 'Ranking de Usuários'
+                    text: 'Ranking de Usuários',
+                    color: '#ffffff'
                 }
             },
+
             scales: {
+
+                x: {
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                },
+
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+
+                    ticks: {
+                        color: '#ffffff'
+                    }
                 }
             }
         }
     });
 }
 
-// ===================== TROCA DE ABA =====================
 function mudarAba(aba) {
-    const tabela = document.getElementById('tabelaPlacar');
-    const grafico = document.getElementById('grafico_principal');
 
-    const btnPlacar = document.querySelector('[onclick="mudarAba(\'placar\')"]');
-    const btnGrafico = document.querySelector('[onclick="mudarAba(\'graficos\')"]');
+    const tabela =
+        document.getElementById('tabelaPlacar');
+
+    const graficoContainer =
+        document.getElementById('graficoContainer');
+
+    const btnPlacar =
+        document.querySelector(
+            '[onclick="mudarAba(\'placar\')"]'
+        );
+
+    const btnGrafico =
+        document.querySelector(
+            '[onclick="mudarAba(\'graficos\')"]'
+        );
 
     if (aba === 'placar') {
+
         tabela.style.display = 'table';
-        grafico.style.display = 'none';
+        graficoContainer.style.display = 'none';
 
         btnPlacar.className = 'aba-ativa';
         btnGrafico.className = 'aba-inativa';
     }
 
     if (aba === 'graficos') {
+
         tabela.style.display = 'none';
-        grafico.style.display = 'block';
+        graficoContainer.style.display = 'block';
 
         btnPlacar.className = 'aba-inativa';
         btnGrafico.className = 'aba-ativa';
 
-        // 🔥 espera renderizar antes de criar gráfico
         setTimeout(() => {
             criarGrafico();
-        }, 50);
+        }, 100);
     }
 }

@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estatísticas - Fórmula 1</title>
+
     <link rel="stylesheet" href="./src/style/style.css">
     <link rel="stylesheet" href="./src/style/estatisticas.css">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
     <div class="nav">
-        <div class="logo">  
+        <div class="logo">
             <img class="img_logo" src="./src/img/logo_site.png" alt="">
         </div>
+
         <div class="links">
             <a href="index.html">Início</a>
             <a href="estatisticas.html">Estatísticas</a>
@@ -23,51 +26,64 @@
     </div>
 
     <div class="conteudo-estatisticas">
+
         <h1 class="titulo-estatisticas">Suas Estatísticas</h1>
 
-        <div class="usuario_atual" id="usuario_atual">
-            
-        </div>
+        <div class="usuario_atual" id="usuario_atual"></div>
 
         <div class="cards-estatisticas">
+
             <div class="card-stat">
                 <p class="label-stat">Taxa de acerto</p>
-                <p class="valor-stat" id="taxaAcerto">30.0%</p>
+                <p class="valor-stat" id="taxaAcerto">0%</p>
             </div>
+
             <div class="card-stat">
                 <p class="label-stat">Melhor Pontuação</p>
-                <p class="valor-stat" id="melhorPontuacao">30</p>
+                <p class="valor-stat" id="melhorPontuacao">0</p>
             </div>
+
             <div class="card-stat">
                 <p class="label-stat">Quizes Realizados</p>
-                <p class="valor-stat" id="quizesRealizados">1</p>
+                <p class="valor-stat" id="quizesRealizados">0</p>
             </div>
+
             <div class="card-stat">
                 <p class="label-stat">Tempo Total</p>
-                <p class="valor-stat" id="tempoTotal">00:02:00</p>
+                <p class="valor-stat" id="tempoTotal">00:00:00</p>
             </div>
+
         </div>
 
         <div class="placar-container">
+
             <div class="titulo-placar">
+
                 <h2>PLACAR</h2>
+
                 <div class="abas-placar">
-                    <button class="aba-ativa" onclick="mudarAba('placar')">placar</button>
-                    <button class="aba-inativa" onclick="mudarAba('graficos')">gráficos</button>
+                    <button class="aba-ativa" onclick="mudarAba('placar')">
+                        placar
+                    </button>
+
+                    <button class="aba-inativa" onclick="mudarAba('graficos')">
+                        gráficos
+                    </button>
                 </div>
+
             </div>
 
+            <!-- TABELA -->
             <table class="tabela-placar" id="tabelaPlacar">
-                <tbody id="bodyTabelaPlacar">
-                    <!-- Linhas da tabela serão inseridas aqui pelo JavaScript -->
-                </tbody>
+                <tbody id="bodyTabelaPlacar"></tbody>
             </table>
-        </div>
 
+            <!-- GRÁFICO -->
+            <div id="graficoContainer"
+                 style="display:none;height:450px;padding:20px;">
+                <canvas id="grafico_principal"></canvas>
+            </div>
 
-        <div class="graficos-container">
-            <h2>Graficos</h2>
-            <canvas id="grafico_principal" style="display:none;"></canvas>
         </div>
 
     </div>
