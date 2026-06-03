@@ -38,7 +38,7 @@ function criarGrafico() {
             labels,
 
             datasets: [{
-                label: 'Melhor Pontuação',
+                label: 'Pontuação',
                 data: dados,
 
                 backgroundColor: 'rgba(255,0,0,0.5)',
