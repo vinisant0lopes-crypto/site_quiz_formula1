@@ -1,0 +1,184 @@
+{
+  "questoes": [
+    {
+      "id": 1,
+      "categoria": "Fácil",
+      "pergunta": "Qual equipe tem mais campeonatos de construtores?",
+      "opcoes": [
+        "Mercedes",
+        "Red Bull",
+        "Ferrari",
+        "Alpine"
+      ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 2,
+      "categoria": "Fácil",
+      "pergunta": "Qual é o nome do autódromo onde ocorre o GP de São Paulo?",
+      "opcoes": [
+        "Autódromo de Interlagos",
+        "Silverstone",
+        "Imola",
+        "Jacarepaguá"
+      ],
+      "respostaCorreta": 0
+    },
+    {
+      "id": 3,
+      "categoria": "Fácil",
+      "pergunta": "Qual piloto brasileiro tem mais vitórias pela categoria?",
+      "opcoes": [
+        "Nelson Piquet",
+        "Felipe Massa",
+        "Gabriel Bortoleto",
+        "Ayrton Senna"
+      ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 4,
+      "categoria": "Fácil",
+      "pergunta": "Qual é o nome do momento onde os pilotos param para trocar pneus durante as corridas?",
+      "opcoes": [
+        "Hora do Almoço",
+        "Pit Stop",
+        "Safety Car",
+        "Largada"
+      ],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 5,
+      "categoria": "Fácil",
+      "pergunta": "Qual bandeira é usada para simbolizar o fim da corrida?",
+      "opcoes": [
+        "Bandeira Branca",
+        "Bandeira Vermelha",
+        "Bandeira Quadriculada",
+        "Bandeira Verde"
+      ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 6,
+      "categoria": "Médio",
+      "pergunta": "Qual é o nome do atual piloto brasileiro?",
+      "opcoes": [
+        "Nelsinho Piquet",
+        "Felipe Massa",
+        "Gabriel Bortoleto",
+        "Felipe Drugovich"
+      ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 7,
+      "categoria": "Médio",
+      "pergunta": "Qual é o piloto com mais títulos da F1?",
+      "opcoes": [
+        "Ayrton Senna",
+        "Lewis Hamilton",
+        "Max Verstappen",
+        "Michael Schumacher"
+      ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 8,
+      "categoria": "Médio",
+      "pergunta": "Qual foi o piloto que quebrou o recorde de pontuação de 575 pontos em 2023?",
+      "opcoes": [
+        "Lewis Hamilton",
+        "Charles Leclerc",
+        "Max Verstappen",
+        "Lando Norris"
+      ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 9,
+      "categoria": "Médio",
+      "pergunta": "Qual o piloto com mais pódios na F1?",
+      "opcoes": [
+        "Lewis Hamilton",
+        "Michael Schumacher",
+        "Fernando Alonso",
+        "Sebastian Vettel"
+      ],
+      "respostaCorreta": 0
+    },
+    {
+      "id": 10,
+      "categoria": "Difícil",
+      "pergunta": "Qual é o país que mais tem corridas na temporada atual?",
+      "opcoes": [
+        "França",
+        "Brasil",
+        "Itália",
+        "Estados Unidos"
+      ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 11,
+      "categoria": "Difícil",
+      "pergunta": "Ayrton Senna foi tricampeão mundial por qual equipe e em quais anos?",
+      "opcoes": [
+        "Ferrari 1985, 1990 e 1992",
+        "Lotus 1989, 1990 e 1991",
+        "McLaren 1988, 1990 e 1991",
+        "Williams 1987, 1988 e 1989"
+      ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 12,
+      "categoria": "Difícil",
+      "pergunta": "Qual foi o primeiro piloto brasileiro a se tornar campeão mundial?",
+      "opcoes": [
+        "Ayrton Senna",
+        "Felipe Massa",
+        "Nelson Piquet",
+        "Emerson Fittipaldi"
+      ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 13,
+      "categoria": "Extremo",
+      "pergunta": "Em que ano ocorreu a primeira temporada da F1?",
+      "opcoes": [
+        "1951",
+        "1960",
+        "1952",
+        "1950"
+      ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 14,
+      "categoria": "Extremo",
+      "pergunta": "Qual foi a primeira equipe campeã da F1 em 1950?",
+      "opcoes": [
+        "Alfa Romeo",
+        "Ferrari",
+        "Mercedes",
+        "Williams"
+      ],
+      "respostaCorreta": 0
+    },
+    {
+      "id": 15,
+      "categoria": "Extremo",
+      "pergunta": "Qual o primeiro piloto campeão da F1 em 1950?",
+      "opcoes": [
+        "Stirling Moss",
+        "Giuseppe Farina",
+        "José Manuel Fangio",
+        "Niki Lauda"
+      ],
+      "respostaCorreta": 1
+    }
+  ]
+}

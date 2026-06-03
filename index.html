@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/index.css">
 </head>
 <body>
 
     <div class="nav">
         <div class="logo">  
-            <img class="img_logo" src="src/img/logo_site.png" alt="">
+            <img class="img_logo" src="./src/img/logo_site.png" alt="">
         </div>
         <div class="links">
-            <a>Inicio</a>
-            <a>Estatisticas</a>
-            <a>Sobre</a>
-            <a>Logar</a>
+            <a href="index.html">Início</a>
+            <a href="estatisticas.html">Estatísticas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="login.html">Logar</a>
         </div>
     </div>
 
     <div class="conteudo">
         <div class="conteudo-interno">
-            <p>Bem vindo ao site de quiz de formula um</p>
+            <p class="titulo">Bem vindo ao site de quiz de formula um</p>
+            <hr class="separador">
+            <p class="subtitulo">Teste seus conhecimentos sobre a formula um e veja se voce é um verdadeiro fã da categoria</p>
+            <div class="botoes">
+                <button class="btn_iniciar" type="button">Iniciar Quiz</button>
+                <button class="btn_estatisticas">Ver Estatisticas</button>
+            </div>
         </div>
     </div>
+
+    <script src="./src/js/index.js"></script>
     
 </body>
 </html>

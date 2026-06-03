@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - Fórmula 1</title>
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/estatisticas.css">
+</head>
+<body>
+
+    <div class="nav">
+        <div class="logo">  
+            <img class="img_logo" src="./src/img/logo_site.png" alt="">
+        </div>
+        <div class="links">
+            <a href="index.html">Início</a>
+            <a href="estatisticas.html">Estatísticas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="login.html">Logar</a>
+        </div>
+    </div>
+
+    <div class="conteudo-estatisticas">
+        <h1 class="titulo-estatisticas">Suas Estatísticas</h1>
+
+        <div class="cards-estatisticas">
+            <div class="card-stat">
+                <p class="label-stat">Taxa de acerto</p>
+                <p class="valor-stat" id="taxaAcerto">30.0%</p>
+            </div>
+            <div class="card-stat">
+                <p class="label-stat">Melhor Pontuação</p>
+                <p class="valor-stat" id="melhorPontuacao">30</p>
+            </div>
+            <div class="card-stat">
+                <p class="label-stat">Quizes Realizados</p>
+                <p class="valor-stat" id="quizesRealizados">1</p>
+            </div>
+            <div class="card-stat">
+                <p class="label-stat">Tempo Total</p>
+                <p class="valor-stat" id="tempoTotal">00:02:00</p>
+            </div>
+        </div>
+
+        <div class="placar-container">
+            <div class="titulo-placar">
+                <h2>PLACAR</h2>
+                <div class="abas-placar">
+                    <button class="aba-ativa" onclick="mudarAba('placar')">placar</button>
+                    <button class="aba-inativa" onclick="mudarAba('graficos')">gráficos</button>
+                </div>
+            </div>
+
+            <table class="tabela-placar" id="tabelaPlacar">
+                <tbody id="bodyTabelaPlacar">
+                    <!-- Linhas da tabela serão inseridas aqui pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="./src/js/estatisticas.js"></script>
+
+</body>
+</html>

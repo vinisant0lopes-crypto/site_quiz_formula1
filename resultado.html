@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Quiz Fórmula 1</title>
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/resultado.css">
+</head>
+<body>
+
+    <div class="nav">
+        <div class="logo">  
+            <img class="img_logo" src="./src/img/logo_site.png" alt="">
+        </div>
+        <div class="links">
+            <a href="index.html">Início</a>
+            <a href="estatisticas.html">Estatísticas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="login.html">Logar</a>
+        </div>
+    </div>
+
+    <div class="conteudo-resultado">
+        <h1 class="titulo-resultado">Quiz Concluído!</h1>
+
+        <div class="card-resultado">
+            <div class="linha-resultado">
+                <span class="label-resultado">Usuário:</span>
+                <span class="valor-resultado" id="usuarioResultado">Anônimo</span>
+            </div>
+            <div class="linha-resultado">
+                <span class="label-resultado">Pontuação:</span>
+                <span class="valor-resultado pontuacao-resultado" id="pontuacaoResultado">0</span>
+            </div>
+            <div class="linha-resultado">
+                <span class="label-resultado">Tempo:</span>
+                <span class="valor-resultado" id="tempoResultado">00:00:00</span>
+            </div>
+            <div class="linha-resultado">
+                <span class="label-resultado">Acertos:</span>
+                <span class="valor-resultado" id="acertosResultado">0/10</span>
+            </div>
+        </div>
+
+        <div class="mensagem-resultado" id="mensagemResultado">
+            <!-- Mensagem será inserida aqui pelo JavaScript -->
+        </div>
+
+        <div class="botoes-resultado">
+            <button class="btn-fazer-novo" onclick="fazerNovoQuiz()">Fazer Novo Quiz</button>
+            <button class="btn-ver-stats" onclick="verEstatisticas()">Ver Estatísticas</button>
+            <button class="btn-voltar-inicio" onclick="voltarParaInicio()">Voltar ao Início</button>
+        </div>
+    </div>
+
+    <script src="./src/js/resultado.js"></script>
+
+</body>
+</html>

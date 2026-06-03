@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Fórmula 1</title>
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/quiz.css">
+</head>
+<body>
+
+    <div class="nav">
+        <div class="logo">  
+            <img class="img_logo" src="./src/img/logo_site.png" alt="">
+        </div>
+        <div class="links">
+            <a href="index.html">Início</a>
+            <a href="estatisticas.html">Estatísticas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="login.html">Logar</a>
+        </div>
+    </div>
+
+    <div class="conteudo-quiz">
+        <div class="controles-quiz">
+            <button class="btn-voltar" onclick="voltarParaInicio()">< voltar</button>
+            <span class="numero-pergunta">pergunta <span id="perguntaAtual">1</span> de <span id="totalPerguntas">15</span></span>
+        </div>
+
+        <div class="container-quiz">
+            <div class="categoria-badge">
+                <span id="categoriaPergunta">Pilotos</span>
+            </div>
+
+            <h2 class="pergunta-titulo" id="perguntaTitulo">Quem venceu o Campeonato Mundial de Pilotos de F1 em 2023?</h2>
+
+            <div class="opcoes-container" id="opcoesContainer">
+                <!-- Opções serão inseridas aqui pelo JavaScript -->
+            </div>
+
+            <button class="btn-proxima" id="btnProxima" onclick="proximaPergunta()" disabled>Próxima Pergunta</button>
+        </div>
+
+        <div class="progresso-quiz">
+            <div class="barra-progresso" id="barraProgresso">
+                <!-- Barra de níveis será inserida aqui pelo JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/js/quiz.js"></script>
+
+</body>
+</html>

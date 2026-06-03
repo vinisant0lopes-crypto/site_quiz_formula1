@@ -1,0 +1,145 @@
+/* Estilos específicos para a página de Resultado */
+
+.conteudo-resultado {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/src/img/imagem_fundo.avif);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    font-family: Inter, sans-serif;
+    color: white;
+}
+
+.titulo-resultado {
+    font-size: var(--tamanho-texto-enorme);
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card-resultado {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.linha-resultado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.linha-resultado:last-child {
+    border-bottom: none;
+}
+
+.label-resultado {
+    font-size: 16px;
+    color: #ccc;
+    font-weight: 600;
+}
+
+.valor-resultado {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.pontuacao-resultado {
+    color: red;
+    font-size: 28px;
+}
+
+.mensagem-resultado {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem-excelente {
+    border: 2px solid #00ff00;
+    color: #00ff00;
+}
+
+.mensagem-otima {
+    border: 2px solid #00dd00;
+    color: #00dd00;
+}
+
+.mensagem-boa {
+    border: 2px solid #ffff00;
+    color: #ffff00;
+}
+
+.mensagem-media {
+    border: 2px solid #ff8800;
+    color: #ff8800;
+}
+
+.mensagem-baixa {
+    border: 2px solid #ff4444;
+    color: #ff4444;
+}
+
+.botoes-resultado {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn-fazer-novo, .btn-ver-stats, .btn-voltar-inicio {
+    padding: 12px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-fazer-novo:hover, .btn-ver-stats:hover, .btn-voltar-inicio:hover {
+    background-color: darkred;
+    transform: scale(1.02);
+}
+
+.btn-ver-stats {
+    background-color: #333;
+}
+
+.btn-ver-stats:hover {
+    background-color: #555;
+}
+
+.btn-voltar-inicio {
+    background-color: #333;
+}
+
+.btn-voltar-inicio:hover {
+    background-color: #555;
+}

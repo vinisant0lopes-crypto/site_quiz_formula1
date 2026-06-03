@@ -1,0 +1,82 @@
+/* Estilos específicos para a página Sobre */
+
+.conteudo-sobre {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/src/img/imagem_fundo.avif);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+    padding: 40px 20px;
+    font-family: Inter, sans-serif;
+    color: white;
+}
+
+.titulo-sobre {
+    text-align: center;
+    font-size: var(--tamanho-texto-enorme);
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.secao-sobre {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px 30px;
+    max-width: 900px;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+}
+
+.secao-sobre:hover {
+    border-color: red;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
+.secao-sobre h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: red;
+}
+
+.secao-sobre p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.secao-sobre ul {
+    font-size: 16px;
+    line-height: 2;
+    color: #ddd;
+    margin-left: 20px;
+}
+
+.secao-sobre li {
+    margin-bottom: 10px;
+}
+
+.grid-topicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.topico {
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 2px solid red;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.topico:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    transform: scale(1.05);
+}

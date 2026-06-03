@@ -1,0 +1,153 @@
+/* Estilos específicos para a página de Estatísticas */
+
+.conteudo-estatisticas {
+    background-color: black;
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+    padding: 30px 20px;
+    font-family: Inter, sans-serif;
+    color: white;
+}
+
+.titulo-estatisticas {
+    text-align: center;
+    font-size: var(--tamanho-texto-enorme);
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.cards-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.card-stat {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card-stat:hover {
+    border-color: red;
+    transform: scale(1.05);
+}
+
+.label-stat {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.valor-stat {
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+    font-family: Orbitron, sans-serif;
+}
+
+.placar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.titulo-placar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.titulo-placar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.abas-placar {
+    display: flex;
+    gap: 10px;
+}
+
+.aba-ativa, .aba-inativa {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Inter, sans-serif;
+}
+
+.aba-ativa {
+    background-color: red;
+    color: white;
+}
+
+.aba-inativa {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #999;
+}
+
+.aba-inativa:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabela-placar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-placar tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabela-placar tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tabela-placar tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tabela-placar td {
+    padding: 15px 10px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.coluna-posicao {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    font-family: Orbitron, sans-serif;
+}
+
+.coluna-nome {
+    flex: 1;
+    color: white;
+}
+
+.coluna-pontos {
+    text-align: right;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Orbitron, sans-serif;
+}
