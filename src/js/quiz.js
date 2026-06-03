@@ -1,3 +1,4 @@
+// ================= Variáveis Globais =================
 let questoes = [];
 let perguntaAtual = 0;
 let pontuacao = 0;
@@ -6,10 +7,11 @@ let tempoInicio = 0;
 let usuarioAtual = localStorage.getItem('usuarioAtual') || 'Anônimo';
 let niveisQuiz = [];
 let totalPerguntas = 0;
+let perguntaRespondida = false; // NOVA VARIÁVEL
 
 const ordemNiveis = ['Fácil', 'Médio', 'Difícil', 'Extremo'];
 
-// Carregar questões do arquivo JSON
+// ================= Carregar questões =================
 async function carregarQuestoes() {
     try {
         const resposta = await fetch('./src/data/dados.json');
@@ -21,6 +23,7 @@ async function carregarQuestoes() {
     }
 }
 
+// ================= Inicializar Quiz =================
 function inicializarQuiz() {
     tempoInicio = Date.now();
     perguntaAtual = 0;
@@ -39,28 +42,24 @@ function inicializarQuiz() {
     exibirPergunta();
 }
 
+// ================= Exibir Pergunta =================
 function exibirPergunta() {
     if (perguntaAtual >= questoes.length) {
         finalizarQuiz();
         return;
     }
 
+    perguntaRespondida = false; // Reset da trava de clique
+
     const pergunta = questoes[perguntaAtual];
-    
-    // Atualizar número da pergunta
+
     document.getElementById('perguntaAtual').textContent = perguntaAtual + 1;
-    
-    // Atualizar categoria
     document.getElementById('categoriaPergunta').textContent = pergunta.categoria;
-    
-    // Atualizar título da pergunta
     document.getElementById('perguntaTitulo').textContent = pergunta.pergunta;
-    
-    // Limpar opções anteriores
+
     const opcoesContainer = document.getElementById('opcoesContainer');
     opcoesContainer.innerHTML = '';
-    
-    // Criar botões para as opções
+
     pergunta.opcoes.forEach((opcao, indice) => {
         const botaoOpcao = document.createElement('button');
         botaoOpcao.className = 'opcao-botao';
@@ -68,62 +67,61 @@ function exibirPergunta() {
         botaoOpcao.onclick = () => selecionarOpcao(indice, botaoOpcao);
         opcoesContainer.appendChild(botaoOpcao);
     });
-    
-    // Desabilitar botão de próxima
+
     document.getElementById('btnProxima').disabled = true;
-    
-    // Atualizar barra de progresso
     atualizarBarraProgresso();
 }
 
+// ================= Selecionar Opção =================
 function selecionarOpcao(indice, elemento) {
-    // Remover seleção anterior
-    document.querySelectorAll('.opcao-botao').forEach(btn => {
-        btn.classList.remove('selecionado', 'correto', 'incorreto');
-    });
-    
-    // Marcar opção selecionada
-    elemento.classList.add('selecionado');
-    
-    // Verificar se a resposta está correta
+    if (perguntaRespondida) return; // Bloqueia múltiplos cliques
+    perguntaRespondida = true;
+
     const pergunta = questoes[perguntaAtual];
+    const botoes = document.querySelectorAll('.opcao-botao');
+
     const estaCorreto = indice === pergunta.respostaCorreta;
-    
+    elemento.classList.add('selecionado');
+
     if (estaCorreto) {
         elemento.classList.add('correto');
         pontuacao += 10;
     } else {
         elemento.classList.add('incorreto');
-        // Mostrar resposta correta
-        document.querySelectorAll('.opcao-botao')[pergunta.respostaCorreta].classList.add('correto');
+        botoes[pergunta.respostaCorreta].classList.add('correto');
     }
-    
-    // Registrar resposta do usuário
+
     respostasUsuario[perguntaAtual] = {
         resposta: indice,
         correta: estaCorreto
     };
-    
-    // Habilitar botão de próxima pergunta
+
+    botoes.forEach(botao => {
+        botao.disabled = true;
+        botao.style.cursor = 'not-allowed';
+    });
+
     document.getElementById('btnProxima').disabled = false;
 }
 
+// ================= Próxima Pergunta =================
 function proximaPergunta() {
     perguntaAtual++;
     exibirPergunta();
 }
 
+// ================= Voltar para início =================
 function voltarParaInicio() {
     if (confirm('Deseja sair do quiz? Seu progresso será perdido.')) {
         window.location.href = 'index.html';
     }
 }
 
+// ================= Finalizar Quiz =================
 function finalizarQuiz() {
     const tempoFim = Date.now();
     const tempoTotal = Math.floor((tempoFim - tempoInicio) / 1000);
-    
-    // Salvar resultado no localStorage
+
     const resultado = {
         usuario: usuarioAtual,
         data: new Date().toLocaleDateString('pt-BR'),
@@ -131,16 +129,16 @@ function finalizarQuiz() {
         tempo: tempoTotal,
         respostas: respostasUsuario
     };
-    
+
     let resultados = JSON.parse(localStorage.getItem('resultados')) || [];
     resultados.push(resultado);
     localStorage.setItem('resultados', JSON.stringify(resultados));
-    
-    // Redirecionar para página de resultado
+
     sessionStorage.setItem('ultimoResultado', JSON.stringify(resultado));
     window.location.href = 'resultado.html';
 }
 
+// ================= Barra de Progresso =================
 function criarBarraProgresso() {
     const container = document.getElementById('barraProgresso');
     container.innerHTML = '';
@@ -163,7 +161,6 @@ function criarBarraProgresso() {
 
     const marcadores = document.createElement('div');
     marcadores.className = 'marcadores-progresso';
-
     const totalEtapas = niveisQuiz.length;
 
     for (let indice = 0; indice < totalEtapas; indice++) {
@@ -231,13 +228,7 @@ function atualizarBarraProgresso() {
 
     document.querySelectorAll('.segmento-progresso').forEach((segmento, indice) => {
         const preenchimento = segmento.querySelector('.segmento-preenchimento');
-        if (indice < nivelAtivo) {
-            preenchimento.style.width = '100%';
-        } else if (indice === nivelAtivo) {
-            preenchimento.style.width = '0%';
-        } else {
-            preenchimento.style.width = '0%';
-        }
+        preenchimento.style.width = indice < nivelAtivo ? '100%' : '0%';
     });
 
     const marcadorAtivo = document.getElementById('marcadorAtivo');
@@ -246,5 +237,5 @@ function atualizarBarraProgresso() {
     marcadorAtivo.textContent = String(nivelAtivo + 1);
 }
 
-// Inicializar quando a página carregar
+// ================= Inicializar ao carregar a página =================
 window.addEventListener('load', carregarQuestoes);

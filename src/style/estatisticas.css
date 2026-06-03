@@ -151,3 +151,19 @@
     font-size: 18px;
     font-family: Orbitron, sans-serif;
 }
+
+
+.conteudo-estatisticas .usuario_atual{
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 64%;
+    justify-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: orbitron;
+    font-size: var(--tamanho-texto-enorme);
+}

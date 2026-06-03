@@ -6,6 +6,7 @@
     <title>Estatísticas - Fórmula 1</title>
     <link rel="stylesheet" href="./src/style/style.css">
     <link rel="stylesheet" href="./src/style/estatisticas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -23,6 +24,10 @@
 
     <div class="conteudo-estatisticas">
         <h1 class="titulo-estatisticas">Suas Estatísticas</h1>
+
+        <div class="usuario_atual" id="usuario_atual">
+            
+        </div>
 
         <div class="cards-estatisticas">
             <div class="card-stat">
@@ -58,9 +63,17 @@
                 </tbody>
             </table>
         </div>
+
+
+        <div class="graficos-container">
+            <h2>Graficos</h2>
+            <canvas id="grafico_principal" style="display:none;"></canvas>
+        </div>
+
     </div>
 
     <script src="./src/js/estatisticas.js"></script>
+    <script src="./src/js/graficos.js"></script>
 
 </body>
 </html>
