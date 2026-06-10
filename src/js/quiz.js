@@ -38,6 +38,13 @@ function inicializarQuiz() {
         .filter(nivel => nivel.quantidade > 0);
 
     document.getElementById('totalPerguntas').textContent = totalPerguntas;
+    const btnProxima = document.getElementById('btnProxima');
+
+btnProxima.addEventListener('click', () => {
+    if (!btnProxima.disabled) {
+        proximaPergunta();
+    }
+});
     criarBarraProgresso();
     exibirPergunta();
 }
@@ -53,13 +60,14 @@ function exibirPergunta() {
 
     const pergunta = questoes[perguntaAtual];
 
+    // Atualizar texto da pergunta
     document.getElementById('perguntaAtual').textContent = perguntaAtual + 1;
     document.getElementById('categoriaPergunta').textContent = pergunta.categoria;
     document.getElementById('perguntaTitulo').textContent = pergunta.pergunta;
 
+    // Atualizar opções
     const opcoesContainer = document.getElementById('opcoesContainer');
     opcoesContainer.innerHTML = '';
-
     pergunta.opcoes.forEach((opcao, indice) => {
         const botaoOpcao = document.createElement('button');
         botaoOpcao.className = 'opcao-botao';
@@ -70,6 +78,15 @@ function exibirPergunta() {
 
     document.getElementById('btnProxima').disabled = true;
     atualizarBarraProgresso();
+
+  // ✅ Atualizar imagem de fundo
+const fundoQuiz = document.getElementById('fundoQuiz');
+
+if (pergunta.imagemFundo) {
+    fundoQuiz.style.backgroundImage = `url('${pergunta.imagemFundo}')`;
+} else {
+    fundoQuiz.style.backgroundImage = '';
+}
 }
 
 // ================= Selecionar Opção =================
@@ -236,6 +253,8 @@ function atualizarBarraProgresso() {
     marcadorAtivo.style.left = `${posicaoMarcador}%`;
     marcadorAtivo.textContent = String(nivelAtivo + 1);
 }
+
+
 
 // ================= Inicializar ao carregar a página =================
 window.addEventListener('load', carregarQuestoes);

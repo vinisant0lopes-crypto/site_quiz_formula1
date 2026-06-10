@@ -10,7 +10,7 @@
     padding: 30px 20px;
     font-family: Inter, sans-serif;
     color: white;
-    overflow-y: auto;
+    overflow-y: auto
 }
 
 .controles-quiz {
@@ -50,6 +50,44 @@
     border-radius: 0;
     padding: 34px 42px 36px;
     margin-bottom: 30px;
+}
+
+.container-quiz {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Div do fundo */
+.fundo-quiz {
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* blur e escala para não cortar bordas */
+    filter: blur(6px);
+    transform: scale(1.05);
+
+    /* degrade nas bordas */
+    box-shadow: inset 0 0 150px rgba(0,0,0,0.7);
+
+    /* opacidade */
+    opacity: 0.4;
+
+    /* atrás do conteúdo */
+    z-index: 0;
+
+    /* transição suave */
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Conteúdo do quiz fica acima do fundo */
+.container-quiz > *:not(.fundo-quiz) {
+    position: relative;
+    z-index: 1;
 }
 
 .categoria-badge {

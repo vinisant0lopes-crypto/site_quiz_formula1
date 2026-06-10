@@ -28,17 +28,19 @@
         </div>
 
         <div class="container-quiz">
+            <!-- div para o fundo -->
+            <div class="fundo-quiz" id="fundoQuiz"></div>
+        
+            <!-- Conteúdo do quiz permanece intacto -->
             <div class="categoria-badge">
                 <span id="categoriaPergunta">Pilotos</span>
             </div>
-
-            <h2 class="pergunta-titulo" id="perguntaTitulo">Quem venceu o Campeonato Mundial de Pilotos de F1 em 2023?</h2>
-
-            <div class="opcoes-container" id="opcoesContainer">
-                <!-- Opções serão inseridas aqui pelo JavaScript -->
-            </div>
-
-            <button class="btn-proxima" id="btnProxima" onclick="proximaPergunta()" disabled>Próxima Pergunta</button>
+        
+            <h2 class="pergunta-titulo" id="perguntaTitulo">Quem venceu em 2023?</h2>
+        
+            <div class="opcoes-container" id="opcoesContainer"></div>
+        
+            <button class="btn-proxima" id="btnProxima" disabled>Próxima Pergunta</button>
         </div>
 
         <div class="progresso-quiz">

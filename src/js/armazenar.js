@@ -1,0 +1,1 @@
+// Configurar o window.sessionStorage aqui
