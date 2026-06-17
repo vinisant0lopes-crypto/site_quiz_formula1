@@ -1,9 +1,11 @@
 let resultados = [];
-let usuarioAtual = localStorage.getItem('usuarioAtual') || 'Anônimo';
+let usuarioAtual = window.armazenamentoQuiz.obterUsuarioAtual();
 
+// Carrega os resultados e atualiza os cards da tela.
 function carregarEstatisticas() {
 
-    resultados = JSON.parse(localStorage.getItem('resultados')) || [];
+    resultados = window.armazenamentoQuiz.lerResultadosSessao();
+    window.armazenamentoQuiz.depurarDadosSessao();
 
     document.getElementById('usuario_atual').textContent =
         usuarioAtual.toUpperCase();
@@ -25,6 +27,7 @@ function carregarEstatisticas() {
     preencherTabelaPlacar();
 }
 
+// Calcula as métricas gerais dos quizes realizados.
 function calcularEstatisticas() {
 
     let totalAcertos = 0;
@@ -76,6 +79,7 @@ function calcularEstatisticas() {
         `${String(horas).padStart(2,'0')}:${String(minutos).padStart(2,'0')}:${String(segundos).padStart(2,'0')}`;
 }
 
+    // Monta a tabela de placar com os melhores resultados de cada usuário.
 function preencherTabelaPlacar() {
 
     const tbody =
@@ -114,4 +118,5 @@ function preencherTabelaPlacar() {
     });
 }
 
+// Executa a carga inicial da área de estatísticas.
 window.addEventListener('load', carregarEstatisticas);

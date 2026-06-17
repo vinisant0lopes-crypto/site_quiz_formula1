@@ -4,7 +4,7 @@ let perguntaAtual = 0;
 let pontuacao = 0;
 let respostasUsuario = [];
 let tempoInicio = 0;
-let usuarioAtual = localStorage.getItem('usuarioAtual') || 'Anônimo';
+let usuarioAtual = window.armazenamentoQuiz.obterUsuarioAtual();
 let niveisQuiz = [];
 let totalPerguntas = 0;
 let perguntaRespondida = false; // NOVA VARIÁVEL
@@ -12,6 +12,7 @@ let perguntaRespondida = false; // NOVA VARIÁVEL
 const ordemNiveis = ['Fácil', 'Médio', 'Difícil', 'Extremo'];
 
 // ================= Carregar questões =================
+// Busca as perguntas do arquivo JSON e inicia o quiz.
 async function carregarQuestoes() {
     try {
         const resposta = await fetch('./src/data/dados.json');
@@ -24,6 +25,7 @@ async function carregarQuestoes() {
 }
 
 // ================= Inicializar Quiz =================
+// Reinicia o estado do jogo e prepara a primeira pergunta.
 function inicializarQuiz() {
     tempoInicio = Date.now();
     perguntaAtual = 0;
@@ -50,6 +52,7 @@ btnProxima.addEventListener('click', () => {
 }
 
 // ================= Exibir Pergunta =================
+// Renderiza a pergunta atual e suas opções na tela.
 function exibirPergunta() {
     if (perguntaAtual >= questoes.length) {
         finalizarQuiz();
@@ -90,6 +93,7 @@ if (pergunta.imagemFundo) {
 }
 
 // ================= Selecionar Opção =================
+// Marca a opção escolhida, atualiza a pontuação e salva as respostas.
 function selecionarOpcao(indice, elemento) {
     if (perguntaRespondida) return; // Bloqueia múltiplos cliques
     perguntaRespondida = true;
@@ -113,6 +117,8 @@ function selecionarOpcao(indice, elemento) {
         correta: estaCorreto
     };
 
+    window.armazenamentoQuiz.registrarRespostas(respostasUsuario);
+
     botoes.forEach(botao => {
         botao.disabled = true;
         botao.style.cursor = 'not-allowed';
@@ -122,12 +128,14 @@ function selecionarOpcao(indice, elemento) {
 }
 
 // ================= Próxima Pergunta =================
+// Avança para a próxima pergunta do quiz.
 function proximaPergunta() {
     perguntaAtual++;
     exibirPergunta();
 }
 
 // ================= Voltar para início =================
+// Confirma a saída do quiz e retorna para a página inicial.
 function voltarParaInicio() {
     if (confirm('Deseja sair do quiz? Seu progresso será perdido.')) {
         window.location.href = 'index.html';
@@ -135,6 +143,7 @@ function voltarParaInicio() {
 }
 
 // ================= Finalizar Quiz =================
+// Monta o resultado final e salva tudo na sessão.
 function finalizarQuiz() {
     const tempoFim = Date.now();
     const tempoTotal = Math.floor((tempoFim - tempoInicio) / 1000);
@@ -147,15 +156,12 @@ function finalizarQuiz() {
         respostas: respostasUsuario
     };
 
-    let resultados = JSON.parse(localStorage.getItem('resultados')) || [];
-    resultados.push(resultado);
-    localStorage.setItem('resultados', JSON.stringify(resultados));
-
-    sessionStorage.setItem('ultimoResultado', JSON.stringify(resultado));
+    window.armazenamentoQuiz.registrarResultado(resultado);
     window.location.href = 'resultado.html';
 }
 
 // ================= Barra de Progresso =================
+// Cria a barra visual de progresso por níveis.
 function criarBarraProgresso() {
     const container = document.getElementById('barraProgresso');
     container.innerHTML = '';
@@ -204,6 +210,7 @@ function criarBarraProgresso() {
     container.appendChild(marcadores);
 }
 
+// Descobre em qual nível a pergunta atual está localizada.
 function obterNivelAtual(indicePergunta) {
     let acumulado = 0;
 
@@ -234,6 +241,7 @@ function obterNivelAtual(indicePergunta) {
     };
 }
 
+// Atualiza os segmentos e o marcador da barra de progresso.
 function atualizarBarraProgresso() {
     const nivelAtual = obterNivelAtual(perguntaAtual);
     const nivelAtivo = nivelAtual.indice;
@@ -257,4 +265,5 @@ function atualizarBarraProgresso() {
 
 
 // ================= Inicializar ao carregar a página =================
+// Dispara o carregamento inicial do quiz quando a página abre.
 window.addEventListener('load', carregarQuestoes);

@@ -1,14 +1,15 @@
+// Configura os botões e links da página inicial.
 function inicializarPaginaInicial() {
     const btnIniciarQuiz = document.querySelector('.btn_iniciar');
     const btnVerEstatisticas = document.querySelector('.btn_estatisticas');
     const linksNav = document.querySelectorAll('.links a');
     
     // Verificar se usuário está logado
-    const usuarioAtual = localStorage.getItem('usuarioAtual');
+    const usuarioLogado = window.armazenamentoQuiz.temUsuarioLogado();
     
     if (btnIniciarQuiz) {
         btnIniciarQuiz.addEventListener('click', function() {
-            if (!usuarioAtual) {
+            if (!usuarioLogado) {
                 window.location.href = 'login.html';
             } else {
                 window.location.href = 'quiz.html';

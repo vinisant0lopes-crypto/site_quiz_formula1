@@ -1,12 +1,13 @@
 let graficoInstance = null;
 
+// Cria ou recria o gráfico com os melhores resultados salvos na sessão.
 function criarGrafico() {
 
     const canvas =
         document.getElementById('grafico_principal');
 
     const resultados =
-        JSON.parse(localStorage.getItem('resultados')) || [];
+        window.armazenamentoQuiz.lerResultadosSessao();
 
     const melhores = {};
 
@@ -87,6 +88,7 @@ function criarGrafico() {
     });
 }
 
+// Alterna entre a tabela de placar e a área de gráficos.
 function mudarAba(aba) {
 
     const tabela =

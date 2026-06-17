@@ -1,5 +1,6 @@
+// Carrega o resultado salvo e preenche a tela final.
 function carregarResultado() {
-    const resultado = JSON.parse(sessionStorage.getItem('ultimoResultado'));
+    const resultado = window.armazenamentoQuiz.lerEstadoSessao().resultado || JSON.parse(sessionStorage.getItem('ultimoResultado'));
     
     if (!resultado) {
         window.location.href = 'index.html';
@@ -30,9 +31,10 @@ function carregarResultado() {
     exibirMensagem(resultado.pontuacao, totalAcertos);
     
     // Limpar sessionStorage
-    sessionStorage.removeItem('ultimoResultado');
+    window.armazenamentoQuiz.limparResultado();
 }
 
+// Exibe uma mensagem final de acordo com a pontuação obtida.
 function exibirMensagem(pontuacao, acertos) {
     const container = document.getElementById('mensagemResultado');
     let mensagem = '';
@@ -59,17 +61,21 @@ function exibirMensagem(pontuacao, acertos) {
     container.textContent = mensagem;
 }
 
+// Redireciona para iniciar um novo quiz.
 function fazerNovoQuiz() {
     window.location.href = 'quiz.html';
 }
 
+// Abre a tela de estatísticas do usuário.
 function verEstatisticas() {
     window.location.href = 'estatisticas.html';
 }
 
+// Volta para a página inicial.
 function voltarParaInicio() {
     window.location.href = 'index.html';
 }
 
 // Carregar resultado quando a página for carregada
+// Inicia a leitura do resultado ao abrir a página.
 window.addEventListener('load', carregarResultado);
