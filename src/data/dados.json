@@ -88,7 +88,10 @@
         "Max Verstappen",
         "Michael Schumacher"
       ],
-      "respostaCorreta": 3,
+      "respostaCorreta": [
+        1,
+        3
+      ],
       "imagemFundo": "/src/img/grid_completo.webp"
     },
     {

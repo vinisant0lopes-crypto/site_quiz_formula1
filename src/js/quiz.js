@@ -11,6 +11,12 @@ let perguntaRespondida = false; // NOVA VARIÁVEL
 
 const ordemNiveis = ['Fácil', 'Médio', 'Difícil', 'Extremo'];
 
+function obterRespostasCorretas(pergunta) {
+    return Array.isArray(pergunta.respostaCorreta)
+        ? pergunta.respostaCorreta
+        : [pergunta.respostaCorreta];
+}
+
 // ================= Carregar questões =================
 // Busca as perguntas do arquivo JSON e inicia o quiz.
 async function carregarQuestoes() {
@@ -100,8 +106,9 @@ function selecionarOpcao(indice, elemento) {
 
     const pergunta = questoes[perguntaAtual];
     const botoes = document.querySelectorAll('.opcao-botao');
+    const respostasCorretas = obterRespostasCorretas(pergunta);
 
-    const estaCorreto = indice === pergunta.respostaCorreta;
+    const estaCorreto = respostasCorretas.includes(indice);
     elemento.classList.add('selecionado');
 
     if (estaCorreto) {
@@ -109,7 +116,9 @@ function selecionarOpcao(indice, elemento) {
         pontuacao += 10;
     } else {
         elemento.classList.add('incorreto');
-        botoes[pergunta.respostaCorreta].classList.add('correto');
+        respostasCorretas.forEach(indiceCorreto => {
+            botoes[indiceCorreto].classList.add('correto');
+        });
     }
 
     respostasUsuario[perguntaAtual] = {
