@@ -49,3 +49,19 @@ function inicializarPaginaInicial() {
 
 // Inicializar quando a página carregar
 window.addEventListener('load', inicializarPaginaInicial);
+
+
+
+
+//endereço do meu BackEnd
+let url = 'http://localhost:3000/rota1'
+
+//request
+let resp = await fetch(url)
+
+//tratando o retorno do servidor 
+let dados = await resp.json()
+
+alert(dados.mensagem)
+
+console.log(dados)
