@@ -14,11 +14,11 @@ Q5 VARCHAR(100) NOT NULL,
 
 INSERT INTO TBL_resposta(Q1, Q2, Q3, Q4, Q5)
 VALUES 
-('Qual equipe tem mais campeonatos de construtores?', 
-'Qual é o nome do autódromo onde ocorre o GP de São Paulo?', 
-'Qual piloto brasileiro tem mais vitórias pela categoria?', 
-'Qual é o nome do momento onde os pilotos param para trocar pneus durante as corridas?', 
-'Qual bandeira é usada para simbolizar o fim da corrida?')
+('2', '0', '3', '1', '2'),
+('1','3','2','3','3'),
+('0','0','2','0','0'),
+('3','2','1','2','1'),
+('2','3','3','1','0')
 ;
 
 DROP TABLE TBL_resposta;
@@ -35,19 +35,34 @@ FOREIGN KEY(id_resp) REFERENCES TBL_resposta (codigo)
 
 DROP TABLE TBL_pessoa;
 
-INSERT INTO TBL_pessoa(nome, email, senha)
+INSERT INTO TBL_pessoa(nome, email, senha, id_resp)
 VALUES 
-('Max Verstappen','Max.Verstappen2021@gmail.com','MaxPaidolewishamilton2021'),
-('Lando Norris', 'lando.norris@mclaren.com', 'MclarenPapaya4'),
-('Lewis Hamilton','Lewis.Hamiltonroubado2021@gmail.com','Lewis0CTA'),
-('Charles Leclerc','AurudoLeclerc@gmail.com','Metir3daferrari'),
-('Gabriel Bortoleto','GabrielBorbolet0@gmail.com','Meusonheeserborbol3t0')
+('Max Verstappen','Max.Verstappen2021@gmail.com','MaxPaidolewishamilton2021', '5'),
+('Lando Norris', 'lando.norris@mclaren.com', 'MclarenPapaya4', '1'),
+('Lewis Hamilton','Lewis.Hamiltonroubado2021@gmail.com','Lewis0CTA', '2'),
+('Charles Leclerc','AurudoLeclerc@gmail.com','Metir3daferrari', '3'),
+('Gabriel Bortoleto','GabrielBorbolet0@gmail.com','Meusonheeserborbol3t0', '4')
 ;
 
+-- comandos de consulta
+
+-- A: ver todos os dados da tabela
 SELECT * FROM TBL_pessoa;
 SELECT * FROM TBL_resposta;
 
 DROP DATABASE bd_quizz;
 
+-- B: Ver parte dos dados da tabela
 
+SELECT codigo,q1, q2 FROM tbl_resposta;
 
+SELECT nome, senha FROM tbl_pessoa;
+
+-- C: definir filtros para os dados
+SELECT * FROM tbl_resposta WHERE q1 = '1';
+SELECT * FROM tbl_pessoa WHERE email = 'AurudoLeclerc@gmail.com';
+
+-- D: consultas entre tabelas
+SELECT * FROM tbl_pessoa p 
+	inner join tbl_resposta r
+	on p.id_resp = r.codigo;
